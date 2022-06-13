@@ -1,9 +1,58 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import ImageTest from "../components/ImageTest";
+import styles from "../styles/Home.module.css";
+import vercelImg from "../public/vercel.svg";
+import { Button, ButtonBaseProps } from "@mui/material";
+// import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import tw, { styled } from "twin.macro";
 
-const Home: NextPage = () => {
+export const getServerSideProps = async () => {
+  const res = await fetch("http://localhost:3000/api/hello");
+  const data = await res.json();
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: data,
+  };
+};
+
+const Name = styled.h1``;
+
+interface IconProps {
+  index: number;
+}
+
+const Icon = styled.div<IconProps>(({ index }) => [
+  tw`
+  md:w-1 md:flex-shrink-0 md:mt-20 md:text-blue-500 md:text-5xl
+`,
+  css`
+    position: relative;
+    &::before {
+      content: "${index}";
+      padding: ${index};
+    }
+  `,
+]);
+
+const StyledButton = styled(Button)`
+  color: blue;
+  background-color: yellow;
+`;
+
+const PropedButton = styled(Button)(
+  (props: ButtonBaseProps & { textcolor: string }) => ({
+    color: props.textcolor,
+  })
+);
+
+const Home: NextPage<{ name: string }> = ({ name }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,40 +65,18 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+        <h1 className="text-1xl font-bold ">{name}</h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div>
+          <Button variant="text">Text Button</Button>
+          <Button variant="contained">Contained Button</Button>
+          <Button variant="outlined">Outlined Button</Button>
+        </div>
+        <div>
+          <StyledButton variant="text">Text Button</StyledButton>
+          <StyledButton variant="contained">Contained Button</StyledButton>
+          <PropedButton textcolor="red">Outlined Button</PropedButton>
+          <Icon index={10}>abb</Icon>
         </div>
       </main>
 
@@ -59,14 +86,13 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src={vercelImg} alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
-}
-
-export default Home
+  );
+};
+export default Home;
