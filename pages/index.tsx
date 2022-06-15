@@ -1,13 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import ImageTest from "../components/ImageTest";
 import styles from "../styles/Home.module.css";
 import vercelImg from "../public/vercel.svg";
-import { Button, ButtonBaseProps } from "@mui/material";
-// import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { Button, ButtonBaseProps, Container } from "@mui/material";
 import tw, { styled } from "twin.macro";
+import MyButton from "../components/Mybutton";
 
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/hello");
@@ -22,35 +20,7 @@ export const getServerSideProps = async () => {
   };
 };
 
-const Name = styled.h1``;
-
-interface IconProps {
-  index: number;
-}
-
-const Icon = styled.div<IconProps>(({ index }) => [
-  tw`
-  md:w-1 md:flex-shrink-0 md:mt-20 md:text-blue-500 md:text-5xl
-`,
-  css`
-    position: relative;
-    &::before {
-      content: "${index}";
-      padding: ${index};
-    }
-  `,
-]);
-
-const StyledButton = styled(Button)`
-  color: blue;
-  background-color: yellow;
-`;
-
-const PropedButton = styled(Button)(
-  (props: ButtonBaseProps & { textcolor: string }) => ({
-    color: props.textcolor,
-  })
-);
+const TailWindA = styled.a(() => [tw`text-5xl text-green-300 underline`]);
 
 const Home: NextPage<{ name: string }> = ({ name }) => {
   return (
@@ -65,18 +35,16 @@ const Home: NextPage<{ name: string }> = ({ name }) => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-        <h1 className="text-1xl font-bold ">{name}</h1>
-
         <div>
           <Button variant="text">Text Button</Button>
           <Button variant="contained">Contained Button</Button>
           <Button variant="outlined">Outlined Button</Button>
         </div>
         <div>
-          <StyledButton variant="text">Text Button</StyledButton>
-          <StyledButton variant="contained">Contained Button</StyledButton>
-          <PropedButton textcolor="red">Outlined Button</PropedButton>
-          <Icon index={10}>abb</Icon>
+          <a tw="text-5xl text-red-500 underline">TailwindCss!</a>
+        </div>
+        <div>
+          <MyButton>TailwindCss!</MyButton>
         </div>
       </main>
 

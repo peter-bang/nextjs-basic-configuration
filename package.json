@@ -2,6 +2,11 @@
   "name": "next-basic-configuration",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": ">=1.22.0",
+    "npm": "yarn only"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,14 +17,16 @@
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.9.2",
+    "@emotion/cache": "^11.9.3",
     "@emotion/react": "^11.9.3",
+    "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.8.3",
     "babel-plugin-macros": "^3.1.0",
     "cssnano": "^5.1.11",
-    "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "next": "^12.1.7-canary.38",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "twin.macro": "^2.8.2"
   },
   "devDependencies": {
@@ -41,15 +48,10 @@
     "eslint-plugin-storybook": "^0.5.12",
     "msw": "^0.42.1",
     "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.2",
+    "tailwindcss": "^3.1.3",
     "typescript": "4.7.3"
   },
   "msw": {
     "workerDirectory": "public"
-  },
-  "babelMacros": {
-    "twin": {
-      "preset": "emotion"
-    }
   }
 }

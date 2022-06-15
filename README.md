@@ -1,9 +1,9 @@
-## Next.JS Basic configuration
+# Next.JS Basic configuration
 
-# Storybook
+## Storybook
 
-# MUI
+## MUI
 
-# TailWindCss
+## TailWindCss
 
-# .env.local (Environment file)
+## .env.local (Environment file)
