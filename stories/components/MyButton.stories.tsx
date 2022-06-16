@@ -13,3 +13,5 @@ export const Default = Template.bind({});
 Default.args = {
   children: <a>Button</a>,
 };
+
+export const Primary = Template.bind({});

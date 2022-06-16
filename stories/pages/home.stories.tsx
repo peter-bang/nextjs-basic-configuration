@@ -9,7 +9,11 @@ export default {
 export const HomePage: ComponentStory<typeof Home> = (
   args,
   { loaded: { name } }
-) => <Home {...args} name={name} />;
+) => {
+  const getLayout = Home.getLayout ?? ((page) => page);
+  return getLayout(<Home {...args} name={name} />);
+};
+
 HomePage.args = { name: "John Doe" }; //default args
 HomePage.loaders = [
   async () => {
