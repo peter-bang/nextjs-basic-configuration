@@ -52,7 +52,7 @@ const MainAppBar: React.FC<any> = () => {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "Roboto, Helvetica",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -108,7 +108,7 @@ const MainAppBar: React.FC<any> = () => {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
+              fontFamily: "Roboto, Helvetica",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",

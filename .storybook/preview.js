@@ -1,5 +1,5 @@
 // .storybook/preview.js
-// import "../styles/globals.css";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import * as NextImage from "next/image";
 
@@ -20,6 +20,19 @@ if (typeof global.process === "undefined") {
 NextImage.defaultProps = {
   unoptimized: true,
 };
+
+export const decorators = [
+  (Story) => (
+    <>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      />
+      <CssBaseline />
+      <Story />
+    </>
+  ),
+];
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
