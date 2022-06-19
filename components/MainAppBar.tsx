@@ -13,9 +13,9 @@ import {
   Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import AdbIcon from "@mui/icons-material/Adb";
+import DesktopMac from "@mui/icons-material/DesktopMac";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Page A", "Page B", "Page C"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const MainAppBar: React.FC<any> = () => {
@@ -43,7 +43,7 @@ const MainAppBar: React.FC<any> = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <DesktopMac sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -59,7 +59,7 @@ const MainAppBar: React.FC<any> = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Company Name
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -98,7 +98,7 @@ const MainAppBar: React.FC<any> = () => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <DesktopMac sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -115,7 +115,7 @@ const MainAppBar: React.FC<any> = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Company Name
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -132,7 +132,7 @@ const MainAppBar: React.FC<any> = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="IamSerious" src="/Iamserious.png" />
               </IconButton>
             </Tooltip>
             <Menu
